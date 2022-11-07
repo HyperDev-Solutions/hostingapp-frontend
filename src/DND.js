@@ -28,8 +28,10 @@ function DND() {
 
           for (const file of acceptedFiles) {
             console.log("file" ,file)
-
-            data.append("files", file);
+            for (const file of acceptedFiles) {
+              data.append('files[]', file, file.name);
+            }
+            // data.append("files", file);
           }
           data.append(
             "accessToken",
@@ -41,10 +43,10 @@ function DND() {
 
           return fetch("http://localhost:8000/api/deploy", {
             method: "POST",
-            headers: {
-              'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
+            // headers: {
+            //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
               
-            },
+            // },
             body:data,
 
 
