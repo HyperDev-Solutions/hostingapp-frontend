@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const GetALLProject = () => {
   const [state, setState] = useState([]);
   function CallAPI() {
-    fetch(`http://192.168.18.62:4000/api/deploy/getAllProject`, {
+    fetch(`http://localhost:8000/api/deploy/getAllProject`, {
       method: "GET",
       headers: {
         // Accept: 'application/json',

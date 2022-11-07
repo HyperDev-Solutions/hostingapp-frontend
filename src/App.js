@@ -23,7 +23,7 @@ function App() {
         <UploadBox />
         {/* <DND/> */}
       </div>
-      <GetALLProject/>
+      {/* <GetALLProject/> */}
 
 
 
