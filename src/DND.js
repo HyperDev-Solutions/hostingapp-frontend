@@ -10,9 +10,12 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import Callback from "./Callback";
+import Toast from "./components/feedback/Toast";
+import p1 from '../src/unknown.png'
+import p2 from '../src/soem.png'
 // import
 
-function DND() {
+function DND({setToast,setErrorMessage}) {
   const override = {
     display: "block",
     margin: "0 auto",
@@ -53,6 +56,7 @@ function DND() {
     const tokens = JSON.parse(localStorage.getItem("auth"));
     console.log("tokens.access_token" , tokens.access_token);
     const accessToken=tokens.access_token;
+    
 
 
     // const body = {
@@ -93,13 +97,23 @@ function DND() {
             console.log("file", file);
             for (const file of acceptedFiles) {
               setfilename(file.name)
-              data.append("files[]", file, file.name);
+              data.append("files", file, file.name);
             }
             // data.append("files", file);
           }
+
           data.append("accessToken", accessToken);  
 
+
           const pid= localStorage.getItem("projectID");
+          if(!pid){
+            setToast(true);
+            setErrorMessage("Please create a firebase Project linked with your google Account");
+            setLoading(false)
+            return;
+          }
+          console.log(pid);
+          console.log("this is the data we're sending", data);
 
             // console.log(pi)
 
@@ -150,43 +164,49 @@ function DND() {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <>
+    <div className="w-full cursor-pointer">
+      {loading}
       
-       {loading}
      <div className="bg-white text-black">
-
+     
     <h1 > 
-      
-
-
-      
-       <a href={url}>  {url} </a>
+     <a href={url}>  {url} </a>
       </h1>
  </div>
-      <div {...getRootProps()}>
+      <div  {...getRootProps()}>
         <input {...getInputProps()} />
 
         {/* <p>Drag 'n' drop some files here, or click to select files</p> */}
-        <button className="p-5 my-10 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+        <button className="opacity-0 h-0 w-0">
           Drag N Drop some files
+</button>
+ </div>  
+           
+            <div className="flex justify-center -mt-5 space-x-4">
+           <figure>
+           <img  src={p2}  className='z-auto object-scale-down contrast-0 h-12 py-2'/>
+            </figure>
+            <div className="border-solid border-0 border-r-2 h-12 border-gray-200"></div>
 
+            <figure>
+            <img  src={p1}  className='object-scale-down contrast-0 py-2  h-12'/>
+            </figure>
+            </div>
 
-        </button>
-  <a>
-   
-    
-    </a> 
+            <div className="flex justify-center flex-col mt-4 gap-y-4 items-center">
+              <span className="text-sm">Drag & drop zip <br></br> or single file here</span>
+              <button  className="text-gray-500 hover:text-white border px-0.5 border-gray-400 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-sm text-sm text-center mr-2 mb-2 w-1/6 py-1 ">Upload file</button>
+              <p className="text-gray-500">Or <span className="font-medium underline">use an example</span></p>
+            </div>
 
-        
-      </div>
+            
          
-
-         <div className="border border-gray-200 p-6 rounded-lg">
+          {/* <div className="border border-gray-200 p-6 rounded-lg">
                     <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
                     Filename - {filename}
                     </h2>
                    
-                  </div>
+                  </div> */}
 
 
          {/* {filenames.map((val,index)=>{
@@ -201,7 +221,7 @@ function DND() {
       {/* <button onClick={getCode}  className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-white bg-green-800 border  border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Sign In with Google </button> */}
 
      
-    </>
+    </div>
   );
 }
 

@@ -7,6 +7,8 @@ import {
   Link,
   useSearchParams,
 } from "react-router-dom";
+import Toast from './components/feedback/Toast';
+import SideArrow from './components/SideArrow';
 import SideText from './components/SideText'
 import DND from './DND'
 import GetALLProject from './GetALLProject'
@@ -16,10 +18,13 @@ import UploadBox from './UploadBox'
 
 const Main = () => {
  
+  const [openToast,setToast]=useState(false);
+  const [errorMessage,setErrorMessage]=useState('');
+
   return (
     <>
 
-    <div>
+    <div style={{background: "linear-gradient(135deg,#fff,#f8f8f8 59%)"}}>
         {/* <h1>hellow</h1> */}
       {/* <Navbar/>
       <UploadBox/>
@@ -33,10 +38,12 @@ const Main = () => {
   </h1>
 </div>
 
-<div className="flex  justify-center gap-x-20 ">
-  <SideText />
-  <UploadBox />
+<div className="flex  justify-between">
+  <SideText  />
+  <UploadBox setErrorMessage={setErrorMessage} setToast={setToast} />
+  <SideArrow/>
 </div>
+  {openToast && <Toast message={errorMessage} setToast={setToast}/> }
     </div>
     {/* <GetALLProject/> */}
     {

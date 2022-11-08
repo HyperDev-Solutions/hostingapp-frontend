@@ -11,7 +11,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "./Main";
 
 function App() {
-  return (
+ 
+ return (
     <>
       <BrowserRouter>
         <div>

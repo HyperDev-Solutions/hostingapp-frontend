@@ -4,9 +4,13 @@ const InputField = () => {
   const [state, setState] = useState([]);
   const [btn, setbtn] = useState();
 
-  // useEffect(() => {
-  //   // CallAPI()
-  // }, []);
+  useEffect(() => {
+    CallAPI()
+  }, []);
+
+  const handleOptions=(e)=>{
+    console.log("here");
+  }
 
   function getCode() {
     //     const [searchParams, setSearchParams] = useSearchParams();
@@ -35,7 +39,14 @@ const InputField = () => {
   function CallAPI() {
     const tokens = JSON.parse(localStorage.getItem("auth"));
     // console.log("tokens.access_token" , tokens.access_token);
+    if(!tokens)
+    {
+      return ;
+    }
+    else
+    {
     const accessToken = tokens.access_token;
+    
 
     // if ( localStorage.getItem("auth").length==0){
     //   return getCode()
@@ -60,6 +71,7 @@ const InputField = () => {
       .catch((err) => {
         console.log(err.message);
       });
+    }
   }
 
   return (
@@ -72,7 +84,7 @@ const InputField = () => {
         />
       </div>
       <button
-        onClick={CallAPI}
+      
         className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300 "
         type="button"
       >
@@ -83,20 +95,22 @@ const InputField = () => {
         <select
           name="pets"
           id="pet-select"
-          onChange={(e) => {
-            console.log(e.target.value);
-            localStorage.setItem("projectID", e.target.value);
-          }}
+          onChange={handleOptions}
+          // onChange={(e) => {
+          //   console.log("ONcHANGEeVENT",e.target.value);
+          //   localStorage.setItem("projectID", e.target.value);
+          // }}
         >
-          {state.map((val, index) => {
+          {state ? state.map((val, index) => {
             return (
               <>
                 <option
                   key={index}
-                  onSelect={(e) => {
-                    // localStorage.setItem("projectID", val.projectId)
-                    // console.log(e)
-                  }}
+                  // onSelect={(e) => {
+                  //   localStorage.setItem("projectID", val.projectId)
+                  //   console.log("HELLO")
+                  // }}
+                  onClick={()=>console.log("there")}
                   value={val.projectId}
                 >
                   {val.projectId}
@@ -106,11 +120,19 @@ const InputField = () => {
                           
                     // setbutton("Project Id selected")
                     }}> */}
-                Project ID
+                {/* Project ID */}
                 {/* </button> */}
               </>
             );
-          })}
+          }
+        
+          ):
+          (
+            <option>
+              None
+            </option>
+          )
+        }
         </select>
         {/* </path>
         </svg> */}

@@ -3,16 +3,16 @@ import DND from "./DND";
 import FileUpload from "./FileUpload";
 import InputField from "./components/InputField";
 
-const UploadBox = () => {
+const UploadBox = ({setToast,setErrorMessage}) => {
   const [viewbox, setViewBox] = useState();
   const [activeTab,setActive]=useState('HTML');
 
   const RenderView = () => {};
 
   return (
-    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-3xl w-3/6 ">
+    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-2xl w-7/12  ">
       {/* Upload bar  */}
-      <div className=" flex flex-col items-center justify-center">
+      <div className=" flex flex-col items-center justify-center ">
         <div className="flex my-5">
          <InputField/>
           
@@ -20,7 +20,7 @@ const UploadBox = () => {
 
         {/* <hr /> */}
         
-<div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 ">
+<div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 w-full">
     <ul className="flex flex-wrap -mb-px items-center justify-center">
         <li className="mr-2">
             <button 
@@ -29,7 +29,7 @@ const UploadBox = () => {
               setViewBox(() => {
                 return (
                   <>
-                    <FileUpload />
+                    <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
                   </>
                 );
               });
@@ -50,7 +50,7 @@ const UploadBox = () => {
             }}
              className={`inline-block p-4 rounded-t-lg    ${activeTab==='ZIP' ? "active text-sky-600 border-b-4 border-sky-600" : "border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"}` }>ZIP</button>
         </li>
-        <li class="mr-2">
+           {/* <li class="mr-2">
             <button 
              onClick={() => {
               setActive('Templates')
@@ -64,7 +64,7 @@ const UploadBox = () => {
             }}
              className={`inline-block p-4 rounded-t-lg  ${activeTab==='Templates' ? "active text-sky-600 border-b-4 border-sky-600" : "border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"} `}>Templates</button>
         </li>
-   
+    */}
     </ul>
 </div>
 

@@ -6,8 +6,7 @@ module.exports = {
   theme: {
     extend: {
       // fontFamily : 'Lato', 'sans-serif'
-    }
-    ,
+    },
   },
   plugins: [],
 }
