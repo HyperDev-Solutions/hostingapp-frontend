@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const InputField = () => {
   const [state, setState] = useState([]);
+  const [btn, setbtn] = useState();
 
-
-
-
-  
   // useEffect(() => {
   //   // CallAPI()
   // }, []);
@@ -27,7 +24,7 @@ const InputField = () => {
         console.log(e);
       });
 
-      return api 
+    return api;
 
     // const params = window.location.search
     // console.log(params)
@@ -79,12 +76,10 @@ const InputField = () => {
         className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300 "
         type="button"
       >
-        Projects:  
-        
+        Projects:
         {/* {localStorage.getItem("projectID").length === 0
           ? " Get All Project"
           : ""} */}
-
         <select
           name="pets"
           id="pet-select"
@@ -117,7 +112,6 @@ const InputField = () => {
             );
           })}
         </select>
-
         {/* </path>
         </svg> */}
       </button>
@@ -125,17 +119,20 @@ const InputField = () => {
       {/* <button  onClick={GenerateURL} className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Generate URL 
     </button> */}
 
+{localStorage.length === 0  ? 
       <button
         onClick={getCode}
         className=" mx-5 flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 "
         type="button"
       >
         {" "}
-
-        { localStorage.length ===0? 'Sign In with Google' : " Deploy"}
-        
-        {" "}
+        {/* { localStorage.length ===0? 'Sign In with Google' : false } */}
+         Sign in with Google
+        {/* {btn} */}
       </button>
+          : 
+          ''
+          }
     </div>
   );
 };

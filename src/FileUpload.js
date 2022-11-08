@@ -25,13 +25,11 @@ const FileUpload = () => {
         <hr />
       </div>
         <DND/>
-      <p className="p-5"> Drag & drop zip or single file here</p>
+      <p className="p-5">
+         Drag & drop  single or multiple files  here
+      </p>
       <div className="p-5">
-        <button className="flex mx-auto text-gray-500 bg-[#fafafa] border-0 py-2 px-8 focus:outline-none  rounded text-lg">
-          Button
-        </button>
       </div>
-      or Use An Example
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-
+import ClipLoader from "react-spinners/ClipLoader";
+import ScaleLoader from "react-spinners/ScaleLoader";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,9 +13,17 @@ import Callback from "./Callback";
 // import
 
 function DND() {
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
-  
+  const [value, setvalue]=useState("Generated URL will appear here")
+  const [filename , setfilename]=useState(false)
   const [url , setURL ] = useState(false);
+  let [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#ffffff")
 
   function getCode() {
     //     const [searchParams, setSearchParams] = useSearchParams();
@@ -53,11 +62,25 @@ function DND() {
     // };
 
     acceptedFiles.forEach((file) => {
+      
       const reader = new FileReader();
 
       reader.onabort = () => console.log("file reading was aborted");
       reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
+
+        setLoading(()=>{
+          return <>
+          <ScaleLoader
+          color={color}
+          // loading={loading}
+          cssOverride={override}
+          size={500}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+          </>
+        })
         // Do whatever you want with the file contents
         const binaryStr = reader.result;
         console.log("READING");
@@ -69,6 +92,7 @@ function DND() {
           for (const file of acceptedFiles) {
             console.log("file", file);
             for (const file of acceptedFiles) {
+              setfilename(file.name)
               data.append("files[]", file, file.name);
             }
             // data.append("files", file);
@@ -91,9 +115,13 @@ function DND() {
             body: data,
           });
           api = await api.json();
+          
           api=api.defaultUrl
           console.log(api.defaultUrl);
           setURL(api)
+          setLoading(false)
+
+          setvalue(false)
           // return api;
         }
 
@@ -123,14 +151,16 @@ function DND() {
 
   return (
     <>
+      
+       {loading}
      <div className="bg-white text-black">
 
     <h1 > 
-      { 
-      // url==false ?  <div class="loader">  </div> :
-      }
-       <a href={url}>  {url} </a>
       
+
+
+      
+       <a href={url}>  {url} </a>
       </h1>
  </div>
       <div {...getRootProps()}>
@@ -139,6 +169,8 @@ function DND() {
         {/* <p>Drag 'n' drop some files here, or click to select files</p> */}
         <button className="p-5 my-10 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
           Drag N Drop some files
+
+
         </button>
   <a>
    
@@ -147,6 +179,25 @@ function DND() {
 
         
       </div>
+         
+
+         <div className="border border-gray-200 p-6 rounded-lg">
+                    <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                    Filename - {filename}
+                    </h2>
+                   
+                  </div>
+
+
+         {/* {filenames.map((val,index)=>{
+           return (
+             <>
+             <h1 key={index+ 1 }> 
+             {val} 
+             </h1>
+            </>
+          )
+         })} */}
       {/* <button onClick={getCode}  className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-white bg-green-800 border  border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Sign In with Google </button> */}
 
      
