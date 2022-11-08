@@ -39,7 +39,7 @@ const UploadBox = () => {
         <li className="mr-2">
             <button
              onClick={() => {
-              setActive('PDF')
+              setActive('ZIP')
               setViewBox(() => {
                 return (
                   <>
@@ -48,7 +48,7 @@ const UploadBox = () => {
                 );
               });
             }}
-             className={`inline-block p-4 rounded-t-lg    ${activeTab==='PDF' ? "active text-sky-600 border-b-4 border-sky-600" : "border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"}` }>PDF</button>
+             className={`inline-block p-4 rounded-t-lg    ${activeTab==='ZIP' ? "active text-sky-600 border-b-4 border-sky-600" : "border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"}` }>ZIP</button>
         </li>
         <li class="mr-2">
             <button 
