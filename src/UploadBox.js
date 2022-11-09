@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DND from "./DND";
 import FileUpload from "./FileUpload";
 import InputField from "./components/InputField";
@@ -6,6 +6,16 @@ import InputField from "./components/InputField";
 const UploadBox = ({setToast,setErrorMessage}) => {
   const [viewbox, setViewBox] = useState();
   const [activeTab,setActive]=useState('HTML');
+
+  useEffect(()=>{
+    setViewBox(() => {
+      return (
+        <>
+          <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
+        </>
+      );
+    });
+  },[activeTab])
 
   const RenderView = () => {};
 

@@ -3,13 +3,16 @@ import React, { useState, useEffect } from "react";
 const InputField = () => {
   const [state, setState] = useState([]);
   const [btn, setbtn] = useState();
+  const [selectValue,setSelectValue]=useState('');
+  const [storingSelect,setSelectStored]=useState('');
 
   useEffect(() => {
     CallAPI()
   }, []);
 
   const handleOptions=(e)=>{
-    console.log("here");
+    console.log("why");
+    localStorage.setItem("projectID",e.target.value)
   }
 
   function getCode() {
@@ -64,7 +67,8 @@ const InputField = () => {
       .then((actualData) => {
         console.log(actualData);
         const data = actualData.data;
-
+        console.log(data);
+        localStorage.setItem("projectID",data[0].projectId)
         setState(data);
         //  setState(actualData)
       })
@@ -84,34 +88,24 @@ const InputField = () => {
         />
       </div>
       <button
-      
+        // onClick={(e)=>  localStorage.setItem("projectID",selectValue)}
         className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300 "
         type="button"
-      >
+        >
         Projects:
         {/* {localStorage.getItem("projectID").length === 0
           ? " Get All Project"
           : ""} */}
         <select
-          name="pets"
-          id="pet-select"
-          onChange={handleOptions}
-          // onChange={(e) => {
-          //   console.log("ONcHANGEeVENT",e.target.value);
-          //   localStorage.setItem("projectID", e.target.value);
-          // }}
+          onClick={handleOptions}
         >
           {state ? state.map((val, index) => {
             return (
               <>
                 <option
                   key={index}
-                  // onSelect={(e) => {
-                  //   localStorage.setItem("projectID", val.projectId)
-                  //   console.log("HELLO")
-                  // }}
-                  onClick={()=>console.log("there")}
                   value={val.projectId}
+                                 
                 >
                   {val.projectId}
                 </option>
