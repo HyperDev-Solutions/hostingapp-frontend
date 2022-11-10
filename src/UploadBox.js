@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DND from "./DND";
 import FileUpload from "./FileUpload";
 import InputField from "./components/InputField";
+// import ZipUpload from "./ZipUpload";
 
 const UploadBox = ({setToast,setErrorMessage}) => {
   const [viewbox, setViewBox] = useState();
@@ -53,7 +54,8 @@ const UploadBox = ({setToast,setErrorMessage}) => {
               setViewBox(() => {
                 return (
                   <>
-                    <FileUpload />
+                  <FileUpload/>
+                    {/* <ZipUpload/> */}
                   </>
                 );
               });

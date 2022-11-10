@@ -83,6 +83,7 @@ const InputField = () => {
     }
   }
 
+  var GeneratedURL=localStorage.getItem("SiteURL")
   return (
     <div className="flex">
       <div className="relative w-full">
@@ -90,6 +91,7 @@ const InputField = () => {
           type="text"
           className="block p-2.5 w-full z-20 text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600"
           placeholder="link-name"
+          // value={}
         />
       </div>
       <button
