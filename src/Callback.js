@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 // import { useLocation  , useHistor } from "react-router-dom";
 
+const URL=process.env.REACT_APP_BASE_URL
+
 const Callback = () => {
+  
     // const history=useHistory()
 //   console.log("sd");
   useEffect(() => {
@@ -9,7 +12,8 @@ const Callback = () => {
     let code = params.get("code");
     console.log(code);
 
-    fetch(`http://localhost:8000/api/deploy/auth/googleToken?code=${code}`)
+    // fetch(`http://localhost:8000/api/deploy/auth/googleToken?code=${code}`)
+    fetch(`${URL}/deploy/auth/googleToken?code=${code}`)
       .then(res=>res.json())
       .then((re) => {
             console.log(re) 

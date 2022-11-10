@@ -3,6 +3,9 @@ import DND from "./DND";
 import p1 from '../src/htmlFileIcon.png'
 import ScaleLoader from "react-spinners/ScaleLoader";
 
+const URL=process.env.REACT_APP_BASE_URL
+
+
 const FileUpload = ({setToast,setErrorMessage}) => {
 
   const override = {
@@ -90,7 +93,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
     data.append("projectName", pid);
     console.log(data);
 
-    var api = await fetch("http://localhost:8000/api/deploy", {
+    var api = await fetch(`${URL}/deploy`, {
       method: "POST",
       // headers: {
       //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'

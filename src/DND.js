@@ -15,6 +15,9 @@ import p1 from '../src/unknown.png'
 import p2 from '../src/soem.png'
 // import
 
+const URL=process.env.REACT_APP_BASE_URL
+
+
 function DND({setToast,setErrorMessage,setAcceptedFiles}) {
 
  
@@ -28,7 +31,7 @@ function DND({setToast,setErrorMessage,setAcceptedFiles}) {
     const token = query.get("code");
     console.log(token);
 
-    var api = fetch("http://localhost:8000/api/deploy/auth/authGoogleUrl")
+    var api = fetch(`${URL}/deploy/auth/authGoogleUrl`)
       .then((res) => res.text())
       .then((re) => window.location.replace(re))
       .catch((e) => {

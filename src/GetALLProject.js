@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+const URL=process.env.REACT_APP_BASE_URL
 const GetALLProject = ({projectid}) => {
   const [state, setState] = useState([]);
   // const [button, setbutton] = useState('Select Project ID');
@@ -13,7 +14,7 @@ const GetALLProject = ({projectid}) => {
 
 
   function CallAPI() {
-    fetch(`http://localhost:8000/api/deploy/getAllProject`, {
+    fetch(`${URL}/deploy/getAllProject`, {
       method: "GET",
       headers: {
         // Accept: 'application/json',
@@ -93,10 +94,10 @@ const GetALLProject = ({projectid}) => {
           <h1 className="text-5xl text-center my-32  text-gray-800 font-semibold"   >  MY PROJECTS </h1>
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
-      {state.map((val) => {
+      {state.map((val,index) => {
         return (
           <>
-                <div className="xl:w-1/3 md:w-1/2 p-4">
+                <div className="xl:w-1/3 md:w-1/2 p-4" key={index + 1 } >
                   <div className="border border-gray-200 p-6 rounded-lg">
                     <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
                     Display Name - {val.displayName}

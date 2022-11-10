@@ -1,4 +1,9 @@
+
 import React, { useState, useEffect } from "react";
+
+
+const URL=process.env.REACT_APP_BASE_URL
+
 
 const InputField = () => {
   const [state, setState] = useState([]);
@@ -24,7 +29,7 @@ const InputField = () => {
     const token = query.get("code");
     console.log(token);
 
-    var api = fetch("http://localhost:8000/api/deploy/auth/authGoogleUrl")
+    var api = fetch(`${URL}/deploy/auth/authGoogleUrl`)
       .then((res) => res.text())
       .then((re) => window.location.replace(re))
       .catch((e) => {
@@ -55,7 +60,7 @@ const InputField = () => {
     //   return getCode()
     // }
 
-    fetch(`http://localhost:8000/api/deploy/getAllProject`, {
+    fetch(`${URL}/deploy/getAllProject`, {
       method: "GET",
       headers: {
         // Accept: 'application/json',
@@ -70,7 +75,7 @@ const InputField = () => {
         console.log(data);
         localStorage.setItem("projectID",data[0].projectId)
         setState(data);
-        //  setState(actualData)
+       
       })
       .catch((err) => {
         console.log(err.message);
