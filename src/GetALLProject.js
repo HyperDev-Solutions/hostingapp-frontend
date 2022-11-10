@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Toast from "./components/feedback/Toast";
 
 const URL=process.env.REACT_APP_BASE_URL
 const GetALLProject = ({projectid}) => {
@@ -14,25 +15,32 @@ const GetALLProject = ({projectid}) => {
 
 
   function CallAPI() {
-    fetch(`${URL}/deploy/getAllProject`, {
-      method: "GET",
-      headers: {
-        // Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((response) => response.json())
-
-      .then((actualData) => {
-        console.log(actualData)
-        const data = actualData.data;
-
-        setState(data);
-        //  setState(actualData)
+    try {
+      fetch(`${URL}/deploy/getAllProject`, {
+        method: "GET",
+        headers: {
+          // Accept: 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+        .then((response) => response.json())
+  
+        .then((actualData) => {
+          console.log(actualData)
+          const data = actualData.data;
+  
+          setState(data);
+          //  setState(actualData)
+        })
+        .catch((err) => {
+          console.log(err.message);
+          return 
+        });
+      
+    } catch (error) {
+      <Toast message={"Cannot load projects"} />
+    }
+
   }
 
   useEffect(() => {

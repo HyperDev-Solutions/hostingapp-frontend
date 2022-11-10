@@ -85,6 +85,8 @@ const InputField = () => {
   }
 
   // var GeneratedURL=localStorage.getItem("SiteURL")
+
+  
   return (
     <div className="flex">
       <div className="relative w-full">
