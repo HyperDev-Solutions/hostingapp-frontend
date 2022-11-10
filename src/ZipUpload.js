@@ -87,30 +87,22 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
     data.append("projectName", pid);
     console.log(data);
 
-try {
-    
     var api = await fetch(`${URL}/deploy/zip`, {
       method: "POST",
       // headers: {
       //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-    
+
       // },
       body: data,
     });
     api = await api.json();
-    
+
     api = api.defaultUrl;
     console.log(api.defaultUrl);
     setURL(api);
     setLoading(false);
-    
-    setvalue(false);
-} catch (error) {
-    
-    setToast(true);
-      setErrorMessage("Site Didn't deploy");
-}
 
+    setvalue(false);
     // return api;
   }
   return (
