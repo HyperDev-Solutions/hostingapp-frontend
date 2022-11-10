@@ -75,8 +75,12 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       // data.append("files", file);
     }
 
-    data.append("accessToken", accessToken);  
 
+    const SiteName=localStorage.getItem("SiteName");
+
+    data.append("siteName", SiteName)
+    data.append("accessToken", accessToken);  
+    
 
     const pid= localStorage.getItem("projectID");
     if(!pid){
