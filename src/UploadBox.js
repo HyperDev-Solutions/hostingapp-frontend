@@ -2,23 +2,21 @@ import React, { useEffect, useState } from "react";
 import DND from "./DND";
 import FileUpload from "./FileUpload";
 import InputField from "./components/InputField";
-import ZipUpload from "./ZipUpload";
-
+// import ZipUpload from "./ZipUpload";
 
 const UploadBox = ({setToast,setErrorMessage}) => {
-  const [viewbox, setViewBox] = useState(<FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>);
+  const [viewbox, setViewBox] = useState();
   const [activeTab,setActive]=useState('HTML');
 
   useEffect(()=>{
-    // setViewBox(() => {
-    //   return (
-    //     <>  
-    //     {/* <ZipUpload  setErrorMessage={setErrorMessage} setToast={setToast}/> */}
-    //       {/* <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/> */}
-    //     </>
-    //   );
-    // });
-  },[activeTab, viewbox])
+    setViewBox(() => {
+      return (
+        <>
+          <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
+        </>
+      );
+    });
+  },[activeTab])
 
   const RenderView = () => {};
 
@@ -56,7 +54,8 @@ const UploadBox = ({setToast,setErrorMessage}) => {
               setViewBox(() => {
                 return (
                   <>
-                    <ZipUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
+                  <FileUpload/>
+                    {/* <ZipUpload/> */}
                   </>
                 );
               });
