@@ -2,26 +2,27 @@ import React, { useEffect, useState } from "react";
 import DND from "./DND";
 import FileUpload from "./FileUpload";
 import InputField from "./components/InputField";
+import ZipUpload from "./ZipUpload";
 // import ZipUpload from "./ZipUpload";
 
 const UploadBox = ({setToast,setErrorMessage}) => {
-  const [viewbox, setViewBox] = useState();
+  const [viewbox, setViewBox] = useState(<FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>);
   const [activeTab,setActive]=useState('HTML');
 
   useEffect(()=>{
-    setViewBox(() => {
-      return (
-        <>
-          <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
-        </>
-      );
-    });
-  },[activeTab])
+    // setViewBox(() => {
+    //   return (
+    //     <>
+    //       <FileUpload  setErrorMessage={setErrorMessage} setToast={setToast}/>
+    //     </>
+    //   );
+    // });
+  },[activeTab,viewbox])
 
   const RenderView = () => {};
 
   return (
-    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-2xl w-7/12  ">
+    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-2xl  md:w-7/12 w-8/12  ">
       {/* Upload bar  */}
       <div className=" flex flex-col items-center justify-center ">
         <div className="flex my-5">
@@ -54,8 +55,8 @@ const UploadBox = ({setToast,setErrorMessage}) => {
               setViewBox(() => {
                 return (
                   <>
-                  <FileUpload/>
-                    {/* <ZipUpload/> */}
+                  {/* <FileUpload/> */}
+                    <ZipUpload setErrorMessage={setErrorMessage} setToast={setToast}/>
                   </>
                 );
               });

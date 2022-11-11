@@ -11,6 +11,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "./Main";
 
 function App() {
+
+  
+
  console.log(process.env.REACT_APP_BASE_URL)
  return (
     <>

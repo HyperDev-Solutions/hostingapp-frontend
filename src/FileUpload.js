@@ -2,6 +2,7 @@ import React,{useEffect, useState} from "react";
 import DND from "./DND";
 import p1 from '../src/htmlFileIcon.png'
 import ScaleLoader from "react-spinners/ScaleLoader";
+import Toast from "./components/feedback/Toast";
 
 const URL=process.env.REACT_APP_BASE_URL
 
@@ -91,24 +92,52 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       // console.log(pi)
 
     data.append("projectName", pid);
+
+    const SITENAME= localStorage.getItem("sitename");
+
+
+    data.append("siteName" , SITENAME)
+
+
     console.log(data);
 
-    var api = await fetch(`${URL}/deploy`, {
-      method: "POST",
-      // headers: {
-      //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+    try {
+      var api = await fetch(`${URL}/deploy`, {
+        method: "POST",
+        // headers: {
+        //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
 
-      // },
-      body: data,
-    });
-    api = await api.json();
+        // },
+        body: data,
+      });
+
+      if (api.status >= 200 && api.status <400){
+          api = await api.json();
     
-    api=api.defaultUrl
-    console.log(api.defaultUrl);
-    setURL(api)
-    setLoading(false)
+          api = api.defaultUrl;
+          console.log(api.defaultUrl);
+          setURL(api);
+          setLoading(false);
+    
+          setvalue(false);
 
-    setvalue(false)
+      }
+
+      if (api.status >= 400){
+        setToast(true)
+        setErrorMessage("Please upload Html , CSS OR IMAGE  file")
+        // Toast(true , "Please upload Zip file")
+        console.log("error")
+        setLoading(false);
+      }
+
+    } catch (error) {
+        setToast(true)
+        setErrorMessage("Please upload Html , CSS OR IMAGE  file")
+      // return api;
+      setLoading(false);
+    //   Toast(true , "Please upload Zip file")
+    }
     // return api;
   }
   return (
