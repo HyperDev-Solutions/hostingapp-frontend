@@ -28,7 +28,7 @@ const Callback = () => {
 
   return (
     <div>
-      hel
+      
       {/* <a href='http://localhost:8000/api/deploy/auth/authGoogleUrl' > LINK   </a> */}
     </div>
   );

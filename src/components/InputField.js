@@ -7,6 +7,7 @@ const URL=process.env.REACT_APP_BASE_URL
 
 const InputField = () => {
   const [state, setState] = useState([]);
+  const [sitename, setSiteName] = useState();
   const [btn, setbtn] = useState();
   const [selectValue,setSelectValue]=useState('');
   const [storingSelect,setSelectStored]=useState('');
@@ -91,6 +92,16 @@ const InputField = () => {
           type="text"
           className="block p-2.5 w-full z-20 text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600"
           placeholder="link-name"
+          onChange={({target})=>{
+            const sitename=target.value;
+            // setSiteName(sitename)
+            if (sitename.length <=0 ){
+                return 
+            }
+            
+            localStorage.setItem("sitename",sitename)
+            
+          }}
           // value={}
         />
       </div>
@@ -142,7 +153,7 @@ const InputField = () => {
       {/* <button  onClick={GenerateURL} className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Generate URL 
     </button> */}
 
-{localStorage.length === 0  ? 
+{localStorage.getItem('auth') == null ? 
       <button
         onClick={getCode}
         className=" mx-5 flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 "

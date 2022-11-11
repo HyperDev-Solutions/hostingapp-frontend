@@ -91,6 +91,13 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       // console.log(pi)
 
     data.append("projectName", pid);
+
+    const SITENAME= localStorage.getItem("sitename");
+
+
+    data.append("siteName" , SITENAME)
+
+
     console.log(data);
 
     var api = await fetch(`${URL}/deploy`, {
