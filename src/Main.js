@@ -33,7 +33,7 @@ const Main = () => {
                   <Navbar/>
 
 <div className=" flex justify-center  text-center">
-  <h1 className="lg:text-4xl md:text-4xl text-3xl   lg:p-10 md:p-8 p-7  font-semibold lg:w-5/12 md:w-8/12  w-8/12">
+  <h1 className="lg:text-4xl md:text-4xl text-3xl   lg:p-10 md:p-8 p-7  font-semibold lg:w-5/12 md:w-8/12  w-11/12">
     The simplest way to host & share your web project
   </h1>
 </div>

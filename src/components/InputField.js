@@ -86,11 +86,11 @@ const InputField = () => {
 
   var GeneratedURL=localStorage.getItem("SiteURL")
   return (
-    <div className="flex">
+    <div className="md:flex">
       <div className="relative w-full">
         <input
           type="text"
-          className="block p-2.5 w-full z-20 text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600"
+          className="block p-2.5 lg:w-full z-20 text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600 w-full "
           placeholder="link-name"
           onChange={({target})=>{
             const sitename=target.value;

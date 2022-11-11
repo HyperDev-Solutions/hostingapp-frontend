@@ -21,7 +21,7 @@ const UploadBox = ({setToast,setErrorMessage}) => {
   const RenderView = () => {};
 
   return (
-    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-2xl w-7/12  ">
+    <div className="lg:flex lg:flex-col bg-white p-8  text-center gap-4  shadow-2xl rounded-2xl  md:w-7/12 w-8/12  ">
       {/* Upload bar  */}
       <div className=" flex flex-col items-center justify-center ">
         <div className="flex my-5">
