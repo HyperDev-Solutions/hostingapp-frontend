@@ -12,7 +12,7 @@ export const Navbar = () => {
       </nav>
 
 
-      <div className="flex items-center justify-between  py-8 lg:hidden md:hidden">
+      <div className="flex items-center justify-between mx-5  py-8 lg:hidden md:hidden">
       <a href="/">
         <img src="https://tiiny.host/assets/logo.png"  height="130"  width="130" className="" alt="logo" />
       </a>
@@ -102,14 +102,14 @@ export const Navbar = () => {
     </div>
 
       <header className="text-gray-600 body-font hidden  md:flex">
-        <div className="container mt-4 md:flex flex-wrap px-2 py-5  md:flex-row sm:flex-row sm:justify-center text-xs justify-center ">
+        <div className="container  mt-4 md:flex flex-wrap px-2 py-5  md:flex-row sm:flex-row sm:justify-center text-xs justify-center ">
           <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
             
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">Blog</a>
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">FAQ</a>
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">Pricing</a>
           </nav>
-            <img src="https://tiiny.host/assets/logo.png" alt="logo" height="130"  width="130"/>
+            <img src="https://tiiny.host/assets/logo.png"  className="mx-6" alt="logo" height="130"  width="130"/>
           <div className="lg:w-2/5 inline-flex lg:justify-end space-x-1  ml-5 lg:ml-0">
             <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in

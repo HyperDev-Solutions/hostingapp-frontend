@@ -17,6 +17,8 @@ import UploadBox from './UploadBox'
 <SideText/>
 
 const Main = () => {
+
+  
  
   const [openToast,setToast]=useState(false);
   const [errorMessage,setErrorMessage]=useState('');
