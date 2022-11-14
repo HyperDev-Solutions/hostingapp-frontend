@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Toast from "./components/feedback/Toast";
 
 const URL=process.env.REACT_APP_BASE_URL
-const GetALLProject = ({projectid}) => {
+const GetALLProject = ({setToast,setErrorMessage}) => {
   const [state, setState] = useState([]);
   // const [button, setbutton] = useState('Select Project ID');
   const [ProjectID, setProjectId] = useState();
@@ -13,30 +14,63 @@ const GetALLProject = ({projectid}) => {
   const accessToken=tokens.access_token;
 
 
-  function CallAPI() {
-    fetch(`${URL}/deploy/getAllProject`, {
-      method: "GET",
-      headers: {
-        // Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((response) => response.json())
-
-      .then((actualData) => {
-        console.log(actualData)
-        const data = actualData.data;
-
-        setState(data);
-        //  setState(actualData)
+  async function CallApi(){
+   try {
+     const Api= await fetch(`${URL}/deploy/getAllProject`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
+
+      if (Api.status >=400){
+              setToast(true);
+      setErrorMessage("Please create a firebase Project linked with your google Account");
+      }
+
+
+      const response=await Api.json();
+  
+      console.log("response" , response)
+    
+   } catch (error) {
+      console.log("error" ,error)
+   }
+   
+
+
+  
+   }
+ 
+
+
+  
+
+  // function CallAPI() {
+  //   fetch(`${URL}/deploy/getAllProject`, {
+  //     method: "GET",
+  //     headers: {
+  //       // Accept: 'application/json',
+  //       Authorization: `Bearer ${accessToken}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+
+  //     .then((actualData) => {
+  //       console.log(actualData)
+  //       const data = actualData.data;
+
+  //       setState(data);
+  //       //  setState(actualData)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }
 
   useEffect(() => {
-    CallAPI()
+    // CallAPI()
+    CallApi()
   },[]);
 
   // useEffect(() => {

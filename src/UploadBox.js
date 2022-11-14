@@ -26,7 +26,7 @@ const UploadBox = ({setToast,setErrorMessage}) => {
       {/* Upload bar  */}
       <div className=" flex flex-col items-center justify-center ">
         <div className="flex my-5">
-         <InputField/>
+         <InputField  setToast={setToast} setErrorMessage={setErrorMessage} />
           
         </div>
 
