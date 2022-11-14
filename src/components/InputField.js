@@ -47,7 +47,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
     // console.log("tokens.access_token" , tokens.access_token);
     if (!tokens) {
       setToast(true)
-      setErrorMessage("Token Not Found")
+      setErrorMessage("Please Sign In Again")
     } else {
       const accessToken = tokens.access_token;
 
@@ -92,7 +92,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
       <div className="relative w-full">
         <input
           type="text"
-          className="block p-2.5 lg:w-full z-20 text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600 w-11/12  "
+          className="block sm:p-2.5 lg:w-full z-20  text-md md:text-md text-black bg-white rounded-l-lg border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600   sm:w-11/12  w-auto sm:mx-0 p-1 mx-4 sm:text-sm  text-xs "
           placeholder="link-name"
           onChange={({ target }) => {
             const sitename = target.value;
@@ -112,14 +112,12 @@ const InputField = ({ setToast, setErrorMessage }) => {
       ) : (
         <button
           // onClick={(e)=>  localStorage.setItem("projectID",selectValue)}
-          className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5    "
+          className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs "
           type="button"
         >
           Projects:
-          {/* {localStorage.getItem("projectID").length === 0
-  ? " Get All Project"
-  : ""} */}
-          <select onClick={handleOptions}>
+        
+          <select onClick={handleOptions} className='mx-0 md:w-auto w-5 '>
             {state ? (
               state.map((val, index) => {
                 return (
@@ -154,7 +152,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
       {localStorage.getItem("auth") == null ? (
         <button
           onClick={getCode}
-          className="lg:my-0 md:my-4 mx-5 flex-shrink-0 z-10 inline-flex items-center  py-2 md:-py-2  my-5 px-4 lg:text-md  font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300   "
+          className="lg:my-0 md:my-4 mx-5 flex-shrink-0 z-10 inline-flex items-center  py-2 md:-py-2  my-5 px-4 md:text-md  font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300  sm:text-sm text-xs "
           type="button"
         >
           {" "}

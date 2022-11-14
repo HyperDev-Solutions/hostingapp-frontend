@@ -123,17 +123,30 @@ const FileUpload = ({setToast,setErrorMessage}) => {
 
       }
 
-      if (api.status >= 400){
+      if (api.status >= 400 & api.status <500){
         setToast(true)
         setErrorMessage("Please upload Html , CSS OR IMAGE  file")
         // Toast(true , "Please upload Zip file")
         console.log("error")
         setLoading(false);
       }
+      if ( api.status >=500){
+        // Show Error Msg From Server
+        let message=await api.json()
+        let {msg } =message
+        console.log("msg" , msg)
+        setToast(true)
+       
+        // Toast(true , "Please upload Zip file")
+        console.log("error")
+        setLoading(false);
+      }
 
     } catch (error) {
-        setToast(true)
-        setErrorMessage("Please upload Html , CSS OR IMAGE  file")
+      let message=await api.json()
+      let {msg } =message
+      console.log("msg" , msg)
+      setErrorMessage(msg)
       // return api;
       setLoading(false);
     //   Toast(true , "Please upload Zip file")
