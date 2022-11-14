@@ -103,15 +103,22 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
           console.log(api.defaultUrl);
           setURL(api);
           setLoading(false);
-    
+          let message=await api.json()
+          let {msg } =message
+          console.log("msg" , msg)
+          setErrorMessage(msg)
           setvalue(false);
 
       }
 
       if (api.status >= 400){
+        let message=await api.json()
+        let {msg } =message
+        console.log("msg" , msg)
+        setErrorMessage(msg)
         setToast(true)
-        setErrorMessage("Please upload Zip file")
-        // Toast(true , "Please upload Zip file")
+        setErrorMessage(msg)
+   
         console.log("error")
         setLoading(false);
       }
@@ -119,6 +126,10 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
     } catch (error) {
         setToast(true)
         setErrorMessage("Please upload Zip file")
+        let message=await api.json()
+        let {msg } =message
+        console.log("msg" , msg)
+        setErrorMessage(msg)
       // return api;
       setLoading(false);
     //   Toast(true , "Please upload Zip file")

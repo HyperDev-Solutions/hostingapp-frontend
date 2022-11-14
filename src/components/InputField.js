@@ -80,7 +80,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
               "Please Sign In again"
             );
 
-            return localStorage.removeItem("auth");
+             localStorage.removeItem("auth");
           }
         });
     }
@@ -152,7 +152,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
       {localStorage.getItem("auth") == null ? (
         <button
           onClick={getCode}
-          className="lg:my-0 md:my-4 mx-5 flex-shrink-0 z-10 inline-flex items-center  py-2 md:-py-2  my-5 px-4 md:text-md  font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300  sm:text-sm text-xs "
+          className="lg:my-0 md:my-4 mx-5 flex-shrink-0 z-10 inline-flex items-center  py-2 md:-py-2  my-5 sm:px-4 md:text-md  font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-r-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300  sm:text-sm text-xs  px-2"
           type="button"
         >
           {" "}
