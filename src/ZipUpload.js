@@ -111,7 +111,7 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
 
       }
 
-      if (api.status >= 400){
+      if (api.status > 401){
         let message=await api.json()
         let {msg } =message
         console.log("msg" , msg)

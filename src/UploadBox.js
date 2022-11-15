@@ -55,7 +55,6 @@ const UploadBox = ({setToast,setErrorMessage}) => {
               setViewBox(() => {
                 return (
                   <>
-                  {/* <FileUpload/> */}
                     <ZipUpload setErrorMessage={setErrorMessage} setToast={setToast}/>
                   </>
                 );

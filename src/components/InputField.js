@@ -11,6 +11,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
 
   useEffect(() => {
     CallAPI();
+    localStorage.removeItem("sitename")
   }, []);
 
   const handleOptions = (e) => {
@@ -92,9 +93,10 @@ const InputField = ({ setToast, setErrorMessage }) => {
       <div className="relative w-full">
         <input
           type="text"
-          className="block sm:p-2.5 lg:w-full z-20  text-md md:text-md text-black bg-white  border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600   sm:w-11/12  w-auto sm:mx-0 p-2 mx-4 sm:text-sm  text-xs   "
+          className="block sm:p-2.5 lg:w-full z-20  text-md md:text-md text-black bg-white  border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600  md:w-12/12  sm:w-11/12  w-auto sm:mx-0 p-2 mx-4 sm:text-sm  text-xs   "
           placeholder="link-name"
           onChange={({ target }) => {
+           
             const sitename = target.value;
             // setSiteName(sitename)
             if (sitename.length <= 0) {

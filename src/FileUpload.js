@@ -123,9 +123,10 @@ const FileUpload = ({setToast,setErrorMessage}) => {
 
       }
 
+
       if (api.status > 401 & api.status <500){
         setToast(true)
-        setErrorMessage("Please upload Html , CSS OR IMAGE  file")
+        setErrorMessage("Please upload Html , CSS OR IMAGE  file");
         // Toast(true , "Please upload Zip file")
         console.log("error")
         setLoading(false);
@@ -144,7 +145,6 @@ const FileUpload = ({setToast,setErrorMessage}) => {
        
         if (msg=='Resource has been exhausted (e.g. check quota).'){
         setErrorMessage("Please Select Another Project")
-
         }
         // Toast(true , "Please upload Zip file")
         console.log("error")
@@ -184,15 +184,15 @@ const FileUpload = ({setToast,setErrorMessage}) => {
 
       {filename && url ?   
       (
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-4 ">
       <h1 > 
-     <a className="text-blue-400" href={url}>  {url} </a>
+     <a className="text-blue-400   text-xs lg:text-base " href={url}>  {url} </a>
      
       </h1> 
        <button
        onClick={(e)=>setURL(false)}
         type="button" 
-        class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 p-1 hover:bg-gray-100 inline-flex " data-dismiss-target="#toast-danger" aria-label="Close">
+        class=" ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 p-1 hover:bg-gray-100 flex-col" data-dismiss-target="#toast-danger" aria-label="Close">
            <span class="sr-only">Close</span>
            <svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
        </button>
@@ -212,7 +212,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
      
     
     </div>
-    <button onClick={handleClick} className="text-white hover:text-white border  border-gray-400 hover:bg-blue-600 bg-blue-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-md text-center mr-2 mb-2 mt-4 w-full py-2 px-2">Upload</button>
+    <button onClick={handleClick} className="text-white hover:text-white border  border-gray-400 hover:bg-blue-600 bg-blue-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-base text-center mr-2 mb-2 mt-4 w-full py-2 px-2">Upload</button>
     </>
   );
 };
