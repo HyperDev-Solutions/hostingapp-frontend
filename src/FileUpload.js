@@ -123,7 +123,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
 
       }
 
-      if (api.status >= 400 & api.status <500){
+      if (api.status > 401 & api.status <500){
         setToast(true)
         setErrorMessage("Please upload Html , CSS OR IMAGE  file")
         // Toast(true , "Please upload Zip file")
@@ -133,10 +133,19 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       if ( api.status >=500){
         // Show Error Msg From Server
         let message=await api.json()
+
+
         let {msg } =message
         console.log("msg" , msg)
+        
+        
         setToast(true)
+        setErrorMessage(msg)
        
+        if (msg=='Resource has been exhausted (e.g. check quota).'){
+        setErrorMessage("Please Select Another Project")
+
+        }
         // Toast(true , "Please upload Zip file")
         console.log("error")
         setLoading(false);
