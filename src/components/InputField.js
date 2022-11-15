@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Select, Option } from "@material-tailwind/react";
 
 const URL = process.env.REACT_APP_BASE_URL;
 
@@ -15,6 +16,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
   }, []);
 
   const handleOptions = (e) => {
+    console.log(e.target.value)
     console.log("why");
     localStorage.setItem("projectID", e.target.value);
   };
@@ -69,7 +71,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
           console.log(actualData);
           const data = actualData.data;
           console.log(data);
-          localStorage.setItem("projectID", data[0].projectId);
+          // localStorage.setItem("projectID", data[0].projectId);
           setState(data);
         })
         .catch((err) => {
@@ -114,19 +116,19 @@ const InputField = ({ setToast, setErrorMessage }) => {
       {localStorage.getItem("auth") == null ? (
        ''
       ) : (
-        <button
-          // onClick={(e)=>  localStorage.setItem("projectID",selectValue)}
-          className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium text-center text-blue-600 bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2  md:mx-auto  "
+        // <>
+         <button
+          className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium text-center text-blue-600 bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2  md:mx-auto truncate  "
           type="button"
-        >
+         >
           {/* Projects: */}
-        
-          <select onClick={handleOptions} className='text-truncate'>
+          <select  onChange={handleOptions}  className=' text-blue-500  '>
             {state ? (
               state.map((val, index) => {
+                // console.log(val)
                 return (
                   <>
-                    <option key={index} value={val.projectId}>
+                    <option key={index} value={val.projectId} className='bg-slate-100 sm:text-base text-xs'>
                       {val.projectId}
                     </option>
                     {/* <button className="p-5 my-10 text-white  border-0 py-2 px-6 focus:outline-none  rounded text-lg" onClick={()=>{
@@ -145,6 +147,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
           </select>
           {/* </path>
 </svg> */}
+{/* </> */}
         </button>
       )
       
