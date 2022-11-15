@@ -116,19 +116,19 @@ const InputField = ({ setToast, setErrorMessage }) => {
       {localStorage.getItem("auth") == null ? (
        ''
       ) : (
-        // <>
-         <button
+        <>
+         {/* <button
           className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium text-center text-blue-600 bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2  md:mx-auto truncate  "
           type="button"
-         >
+         > */}
           {/* Projects: */}
-          <select  onChange={handleOptions}  className=' text-blue-500  '>
+          <select  onChange={handleOptions}  className=' text-blue-500 flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium   bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2    '>
             {state ? (
               state.map((val, index) => {
                 // console.log(val)
                 return (
                   <>
-                    <option key={index} value={val.projectId} className='bg-slate-100 sm:text-base text-xs'>
+                    <option key={index} value={val.projectId} className='bg-slate-100 text-black sm:text-base text-xs'>
                       {val.projectId}
                     </option>
                     {/* <button className="p-5 my-10 text-white  border-0 py-2 px-6 focus:outline-none  rounded text-lg" onClick={()=>{
@@ -148,7 +148,8 @@ const InputField = ({ setToast, setErrorMessage }) => {
           {/* </path>
 </svg> */}
 {/* </> */}
-        </button>
+</>
+     
       )
       
       }
