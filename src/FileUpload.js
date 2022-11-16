@@ -95,8 +95,11 @@ const FileUpload = ({setToast,setErrorMessage}) => {
 
     const SITENAME= localStorage.getItem("sitename");
 
+    if (SITENAME){
+      data.append("siteName" , SITENAME)
+    }
+    
 
-    data.append("siteName" , SITENAME)
 
 
     console.log(data);
