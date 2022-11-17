@@ -42,7 +42,7 @@ const Main = () => {
 
 <div className="flex  justify-between">
   <SideText  />
-  <UploadBox setErrorMessage={setErrorMessage} setToast={setToast} />
+  <UploadBox setErrorMessage={setErrorMessage} setToast={setToast}/>
   <SideArrow/>
 </div>
   {openToast && <Toast message={errorMessage} setToast={setToast}/> }

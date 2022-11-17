@@ -205,7 +205,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
        </div>
       ):
       (
-      <DND setAcceptedFiles={setAcceptedFiles}   setErrorMessage={setErrorMessage} setToast={setToast}/>
+      <DND setAcceptedFiles={setAcceptedFiles}   setErrorMessage={setErrorMessage} setToast={setToast} filetype={'file'} qty={'single or multple'}  />
       )}
       
       

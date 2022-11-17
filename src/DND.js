@@ -18,7 +18,7 @@ import p2 from '../src/soem.png'
 const URL=process.env.REACT_APP_BASE_URL
 
 
-function DND({setToast,setErrorMessage,setAcceptedFiles}) {
+function DND({setToast,setErrorMessage,setAcceptedFiles , filetype , qty}) {
 
  
 
@@ -136,7 +136,8 @@ function DND({setToast,setErrorMessage,setAcceptedFiles}) {
             </div>
 
             <div className="flex justify-center flex-col mt-4 gap-y-4 items-center">
-              <span className="text-sm">Drag & drop multiple <br></br> or single files here</span>
+              <span className="text-sm">Drag & drop {qty} <br></br> 
+               {filetype} here</span>
               {/* <button  className="text-gray-500 hover:text-white border px-0.5 border-gray-400 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-sm text-sm text-center mr-2 mb-2 w-1/6 py-1 ">Upload file</button>
               <p className="text-gray-500">Or <span className="font-medium underline">use an example</span></p> */}
             </div>

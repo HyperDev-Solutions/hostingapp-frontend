@@ -200,6 +200,8 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
             setAcceptedFiles={setAcceptedFiles}
             setErrorMessage={setErrorMessage}
             setToast={setToast}
+            filetype="zip"
+            qty="single"
           />
         )}
 
