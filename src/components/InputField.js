@@ -157,7 +157,7 @@ const InputField = ({ setToast, setErrorMessage }) => {
       {/* <button  onClick={GenerateURL} className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Generate URL 
     </button> */}
 
-      {localStorage.getItem("auth") != null ? (
+      {localStorage.getItem("auth") == null ? (
         <button
           onClick={getCode}
           className="lg:my-0 md:my-4 mx-5 flex-shrink-0 z-10 inline-flex items-center  py-2 md:-py-2  my-5 sm:px-4 md:text-md  font-medium text-center text-white hover:bg-green-800 border  border-blue-600  rounded-lg  hover:text-white  bg-blue-500 focus:ring-4 focus:outline-none focus:ring-gray-300 text-truncate  sm:text-sm text-xs  px-2"
