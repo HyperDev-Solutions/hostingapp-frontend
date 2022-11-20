@@ -14,7 +14,7 @@ export const Navbar = () => {
 
       <div className="flex items-center justify-between mx-5  py-8 lg:hidden md:hidden">
       <a href="/">
-        <img src="https://tiiny.host/assets/logo.png"  height="130"  width="130" className="" alt="logo" />
+        <img src="./logo.png"  height="130"  width="130" className="" alt="logo" />
       </a>
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
@@ -109,7 +109,7 @@ export const Navbar = () => {
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">FAQ</a>
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">Pricing</a>
           </nav>
-            <img src="https://tiiny.host/assets/logo.png"  className="mx-6" alt="logo" height="130"  width="130"/>
+            <img src="./logo.png"  className="mx-6" alt="logo" height="50"  width="50"/>
           <div className="lg:w-2/5 inline-flex lg:justify-end space-x-1  ml-5 lg:ml-0">
             <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in
