@@ -16,14 +16,10 @@ const InputField = ({ setToast, setErrorMessage }) => {
   }, []);
 
   const handleOptions = (e) => {
-    console.log(e.target.value)
-    console.log("why");
     localStorage.setItem("projectID", e.target.value);
   };
 
   function getCode() {
-    //     const [searchParams, setSearchParams] = useSearchParams();
-    // searchParams.get("code")
     const query = new URLSearchParams(window.location.search);
     console.log(query);
 
@@ -46,17 +42,15 @@ const InputField = ({ setToast, setErrorMessage }) => {
   }
 
   function CallAPI() {
+    console.log("tokens.access_token", localStorage.getItem("auth"));
+
     const tokens = JSON.parse(localStorage.getItem("auth"));
-    // console.log("tokens.access_token" , tokens.access_token);
+
     if (!tokens) {
       // setToast(true)
       // setErrorMessage("Please Sign In Again")
     } else {
       const accessToken = tokens.access_token;
-
-      // if ( localStorage.getItem("auth").length==0){
-      //   return getCode()
-      // }
 
       fetch(`${URL}/deploy/getAllProject`, {
         method: "GET",
@@ -68,22 +62,17 @@ const InputField = ({ setToast, setErrorMessage }) => {
         .then((response) => response.json())
 
         .then((actualData) => {
-          console.log(actualData);
           const data = actualData.data;
-          console.log(data);
-          // localStorage.setItem("projectID", data[0].projectId);
+          localStorage.setItem("projectID", data[0].projectId);
           setState(data);
         })
         .catch((err) => {
-          // console.log(err.message);
-          // if (Api.status >= 400) {
           if (err) {
             setToast(true);
             setErrorMessage(
               "Please Sign In again"
             );
-
-             localStorage.removeItem("auth");
+            localStorage.removeItem("auth");
           }
         });
     }
@@ -98,31 +87,26 @@ const InputField = ({ setToast, setErrorMessage }) => {
           className="block sm:p-2.5 lg:w-full z-20  text-md md:text-md text-black bg-white  border-r-gray-100 border-r-2 border border-gray-300 focus:ring-0 focus:border-0 focus:outline-2 focus:outline-blue-600  md:w-12/12  sm:w-11/12  w-auto sm:mx-0 p-2 mx-4 sm:text-sm  text-xs   "
           placeholder="link-name"
           onChange={({ target }) => {
-           
+
             const sitename = target.value;
             // setSiteName(sitename)
             if (sitename.length <= 0) {
               console.log("no value")
               return localStorage.removeItem("sitename")
-                // localStorage.key("sitename") === undefined
+              // localStorage.key("sitename") === undefined
             }
 
             localStorage.setItem("sitename", sitename);
           }}
-          // value={}
+        // value={}
         />
       </div>
 
       {localStorage.getItem("auth") == null ? (
-       ''
+        ''
       ) : (
         <>
-         {/* <button
-          className=" flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium text-center text-blue-600 bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2  md:mx-auto truncate  "
-          type="button"
-         > */}
-          {/* Projects: */}
-          <select  onChange={handleOptions}  className=' text-blue-500 flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium   bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2    '>
+          <select onChange={handleOptions} className=' text-blue-500 flex-shrink-0 z-10 inline-flex items-center py-2.5  lg:my-0 sm:my-5   sm:px-4 lg:text-md font-medium   bg-white border border-blue-600 rounded-lg  hover:text-black focus:ring-4 focus:outline-none focus:ring-gray-300  my-5  sm:text-sm text-xs lg:mx-2    '>
             {state ? (
               state.map((val, index) => {
                 // console.log(val)
@@ -131,13 +115,6 @@ const InputField = ({ setToast, setErrorMessage }) => {
                     <option key={index} value={val.projectId} className='bg-slate-100 text-black sm:text-base text-xs'>
                       {val.projectId}
                     </option>
-                    {/* <button className="p-5 my-10 text-white  border-0 py-2 px-6 focus:outline-none  rounded text-lg" onClick={()=>{
-                  console.log(val.projectId)
-                  
-            // setbutton("Project Id selected")
-            }}> */}
-                    {/* Project ID */}
-                    {/* </button> */}
                   </>
                 );
               })
@@ -145,17 +122,8 @@ const InputField = ({ setToast, setErrorMessage }) => {
               <option>None</option>
             )}
           </select>
-          {/* </path>
-</svg> */}
-{/* </> */}
-</>
-     
-      )
-      
-      }
-
-      {/* <button  onClick={GenerateURL} className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-blue-600 bg-white border border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Generate URL 
-    </button> */}
+        </>
+      )}
 
       {localStorage.getItem("auth") == null ? (
         <button

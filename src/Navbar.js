@@ -60,7 +60,7 @@ export const Navbar = () => {
             <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in
             </button>
-            <button class="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
+            <button className="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
               Sign up free
             </button>
           </div>
@@ -114,7 +114,7 @@ export const Navbar = () => {
             <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in
             </button>
-            <button class="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
+            <button className="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
               Sign up free
             </button>
           </div>

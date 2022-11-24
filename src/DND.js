@@ -15,12 +15,12 @@ import p1 from '../src/unknown.png'
 import p2 from '../src/soem.png'
 // import
 
-const URL=process.env.REACT_APP_BASE_URL
+const URL = process.env.REACT_APP_BASE_URL
 
 
-function DND({setToast,setErrorMessage,setAcceptedFiles , filetype , qty}) {
+function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
 
- 
+
 
   function getCode() {
     //     const [searchParams, setSearchParams] = useSearchParams();
@@ -46,19 +46,20 @@ function DND({setToast,setErrorMessage,setAcceptedFiles , filetype , qty}) {
 
   const onDrop = useCallback((acceptedFiles) => {
     // sending this file as an array
-
+    console.log("========dropeed==========")
     const tokens = JSON.parse(localStorage.getItem("auth"));
-    console.log("tokens.access_token" , tokens.access_token);
-    const accessToken=tokens.access_token;
-    const pid= localStorage.getItem("projectID");
-    
-    if(!pid){
+    console.log("tokens", tokens)
+    const accessToken = tokens.access_token;
+    const pid = localStorage.getItem("projectID");
+    console.log("tokens.access_token", pid);
+
+    if (!pid) {
       setToast(true);
       setErrorMessage("Please create a firebase Project linked with your google Account");
       return;
     }
-    
-    
+
+
 
 
     // const body = {
@@ -68,39 +69,15 @@ function DND({setToast,setErrorMessage,setAcceptedFiles , filetype , qty}) {
     // };
 
     acceptedFiles.forEach((file) => {
-      
+
       const reader = new FileReader();
 
       reader.onabort = () => console.log("file reading was aborted");
       reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
-
-        
-     
         // Do whatever you want with the file contents
         const binaryStr = reader.result;
-        console.log("READING");
-
-       
-
         setAcceptedFiles(acceptedFiles);
-
-        // fetch("https://localhost:8000/api/deploy", {
-        //   method: "POST",
-        // headers: {
-        //   "Content-Type": "multipart/form-data",
-        // },
-        //   body: JSON.stringify(body),
-        // })
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     console.log("Success:", data);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error:", error);
-        //   });
-
-        console.log(binaryStr);
       };
       reader.readAsArrayBuffer(file);
     });
@@ -110,60 +87,32 @@ function DND({setToast,setErrorMessage,setAcceptedFiles , filetype , qty}) {
   return (
     <div className="w-full cursor-pointer">
       {/* {loading} */}
-      
-     <div className="bg-white text-black">
-     
-  
- </div>
-      <div  {...getRootProps()}>
-        <input {...getInputProps()} />
 
-        {/* <p>Drag 'n' drop some files here, or click to select files</p> */}
-        <button className="opacity-0 h-0 w-0">
-          Drag N Drop some files
-</button>
- </div>  
-           
-            <div className="flex justify-center -mt-5 space-x-4">
-           <figure>
-           <img  src={p2}  className='z-auto object-scale-down contrast-0 h-16 py-2'/>
-            </figure>
-            <div className="border-solid border-0 border-r-2 h-16 border-gray-200"></div>
+      <div className="bg-white text-black">
 
-            <figure>
-            <img  src={p1}  className='object-scale-down contrast-0 py-2  h-16'/>
-            </figure>
-            </div>
 
+      </div>
+      <section style={{ border: "1px dotted silver", height: "20vh" }}>
+        <div  {...getRootProps({ className: 'dropzone' })} style={{ height: "20vh", zIndex: 1 }} >
+          <input {...getInputProps()} />
+          <p>
             <div className="flex justify-center flex-col mt-4 gap-y-4 items-center">
-              <span className="text-sm">Drag & drop {qty} <br></br> 
-               {filetype} here</span>
-              {/* <button  className="text-gray-500 hover:text-white border px-0.5 border-gray-400 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-sm text-sm text-center mr-2 mb-2 w-1/6 py-1 ">Upload file</button>
-              <p className="text-gray-500">Or <span className="font-medium underline">use an example</span></p> */}
+              <span className="text-sm">Drag & drop {qty} <br></br>
+                {filetype} here</span>
             </div>
+            <div style={{ marginTop: "10px" }} className="flex justify-center -mt-5 space-x-4">
+              <figure>
+                <img alt="" src={p2} className='z-auto object-scale-down contrast-0 h-16 py-2' />
+              </figure>
+              <div className="border-solid border-0 border-r-2 h-16 border-gray-200"></div>
 
-            
-         
-          {/* <div className="border border-gray-200 p-6 rounded-lg">
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Filename - {filename}
-                    </h2>
-                   
-                  </div> */}
-
-
-         {/* {filenames.map((val,index)=>{
-           return (
-             <>
-             <h1 key={index+ 1 }> 
-             {val} 
-             </h1>
-            </>
-          )
-         })} */}
-      {/* <button onClick={getCode}  className=" flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-white bg-green-800 border  border-blue-600  rounded-r-lg hover:bg-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 " type="button"> Sign In with Google </button> */}
-
-     
+              <figure>
+                <img alt="" src={p1} className='object-scale-down contrast-0 py-2  h-16' />
+              </figure>
+            </div>
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

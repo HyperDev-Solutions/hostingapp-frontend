@@ -175,14 +175,14 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
             <button
               onClick={(e) => setURL(false)}
               type="button"
-              class=" ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 p-1 hover:bg-gray-100 "
+              className=" ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 p-1 hover:bg-gray-100 "
               data-dismiss-target="#toast-danger"
               aria-label="Close"
             >
-              <span class="sr-only">Close</span>
+              <span className="sr-only">Close</span>
               <svg
                 aria-hidden="true"
-                class="w-4 h-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
