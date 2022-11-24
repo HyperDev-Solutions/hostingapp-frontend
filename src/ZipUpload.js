@@ -78,30 +78,22 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
       setLoading(false);
       return;
     }
-    console.log(pid);
     console.log("this is the data we're sending", data);
-
-    // console.log(pi)
 
     data.append("projectName", pid);
 
     const SITENAME = localStorage.getItem("sitename");
 
-
-    if (SITENAME){
-      data.append("siteName" , SITENAME)
+    if (SITENAME) {
+      data.append("siteName", SITENAME);
     }
-
 
     console.log(data);
 
     try {
       var api = await fetch(`${URL}/deploy/zip`, {
         method: "POST",
-        // headers: {
-        //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-
-        // },
+        
         body: data,
       });
 
@@ -117,7 +109,6 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
         // Show Error Msg From Server
         let message = await api.json();
         let { msg } = message;
-        console.log("msg", msg);
         setToast(true);
         setErrorMessage(msg);
 
@@ -125,7 +116,6 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
           setErrorMessage("Please Select Another Project");
         }
         // Toast(true , "Please upload Zip file")
-        console.log("error");
         setLoading(false);
       }
 
@@ -201,6 +191,7 @@ const ZipUpload = ({ setToast, setErrorMessage }) => {
             setErrorMessage={setErrorMessage}
             setToast={setToast}
             filetype="zip"
+            multiple={false}
             qty="single"
           />
         )}

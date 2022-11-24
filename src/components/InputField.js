@@ -3,12 +3,11 @@ import { Select, Option } from "@material-tailwind/react";
 
 const URL = process.env.REACT_APP_BASE_URL;
 
-const InputField = ({ setToast, setErrorMessage }) => {
+const InputField = ({ setToast, setErrorMessage , successToast , SetsuccessToast }) => {
   const [state, setState] = useState([]);
   const [sitename, setSiteName] = useState();
   const [btn, setbtn] = useState();
   const [selectValue, setSelectValue] = useState("");
-  const [storingSelect, setSelectStored] = useState("");
 
   useEffect(() => {
     CallAPI();
@@ -24,7 +23,6 @@ const InputField = ({ setToast, setErrorMessage }) => {
     console.log(query);
 
     const token = query.get("code");
-    console.log(token);
 
     var api = fetch(`${URL}/deploy/auth/authGoogleUrl`)
       .then((res) => res.text())
@@ -35,14 +33,9 @@ const InputField = ({ setToast, setErrorMessage }) => {
 
     return api;
 
-    // const params = window.location.search
-    // console.log(params)
-    // let code = params.get("code");
-    // console.log(code);
   }
 
   function CallAPI() {
-    console.log("tokens.access_token", localStorage.getItem("auth"));
 
     const tokens = JSON.parse(localStorage.getItem("auth"));
 
@@ -59,7 +52,12 @@ const InputField = ({ setToast, setErrorMessage }) => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+         return response.json()
+         
+
+        
+        })
 
         .then((actualData) => {
           const data = actualData.data;

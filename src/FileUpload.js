@@ -7,7 +7,7 @@ import Toast from "./components/feedback/Toast";
 const URL=process.env.REACT_APP_BASE_URL
 
 
-const FileUpload = ({setToast,setErrorMessage}) => {
+const FileUpload = ({setToast,setErrorMessage }) => {
 
   const override = {
     display: "block",
@@ -62,13 +62,10 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       </>
     })
     const tokens = JSON.parse(localStorage.getItem("auth"));
-    console.log("tokens.access_token" , tokens.access_token);
     const accessToken=tokens.access_token;
     const data = new FormData();
-    console.log(acceptedFiles);
 
     for (const file of acceptedFiles) {
-      console.log("file", file);
       for (const file of acceptedFiles) {
         setfilename(file.name)
         data.append("files", file, file.name);
@@ -86,10 +83,8 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       setLoading(false)
       return;
     }
-    console.log(pid);
     console.log("this is the data we're sending", data);
 
-      // console.log(pi)
 
     data.append("projectName", pid);
 
@@ -107,18 +102,18 @@ const FileUpload = ({setToast,setErrorMessage}) => {
     try {
       var api = await fetch(`${URL}/deploy`, {
         method: "POST",
-        // headers: {
-        //   'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-
-        // },
+       
         body: data,
       });
 
       if (api.status >= 400 & api.status <500){
+        let message=await api.json()
+
+
+        let {msg } =message
+        console.log("msg" , msg)       
         setToast(true)
-        setErrorMessage("Please upload Html , CSS OR IMAGE  file");
-        // Toast(true , "Please upload Zip file")
-        console.log("error")
+        setErrorMessage("Please upload Html , CSS OR JS  file");
         setLoading(false);
       }
 
@@ -162,11 +157,8 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       let {msg } =message
       console.log("msg" , msg)
       setErrorMessage(msg)
-      // return api;
       setLoading(false);
-    //   Toast(true , "Please upload Zip file")
     }
-    // return api;
   }
   return (
     <>
@@ -205,7 +197,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
        </div>
       ):
       (
-      <DND setAcceptedFiles={setAcceptedFiles}   setErrorMessage={setErrorMessage} setToast={setToast} filetype={'file'} qty={'single or multple'}  />
+      <DND setAcceptedFiles={setAcceptedFiles}   setErrorMessage={setErrorMessage} setToast={setToast} filetype={'file'} qty={'single or multple'}  multiple={true} />
       )}
       
       

@@ -18,7 +18,7 @@ import p2 from '../src/soem.png'
 const URL = process.env.REACT_APP_BASE_URL
 
 
-function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
+function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty , multiple }) {
 
 
 
@@ -26,10 +26,10 @@ function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
     //     const [searchParams, setSearchParams] = useSearchParams();
     // searchParams.get("code")
     const query = new URLSearchParams(window.location.search);
-    console.log(query);
+  
 
     const token = query.get("code");
-    console.log(token);
+  
 
     var api = fetch(`${URL}/deploy/auth/authGoogleUrl`)
       .then((res) => res.text())
@@ -38,10 +38,7 @@ function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
         console.log(e);
       });
 
-    // const params = window.location.search
-    // console.log(params)
-    // let code = params.get("code");
-    // console.log(code);
+   
   }
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -82,7 +79,7 @@ function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
       reader.readAsArrayBuffer(file);
     });
   }, []);
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop , multiple });
 
   return (
     <div className="w-full cursor-pointer">
@@ -95,6 +92,9 @@ function DND({ setToast, setErrorMessage, setAcceptedFiles, filetype, qty }) {
       <section style={{ border: "1px dotted silver", height: "20vh" }}>
         <div  {...getRootProps({ className: 'dropzone' })} style={{ height: "20vh", zIndex: 1 }} >
           <input {...getInputProps()} />
+
+
+
           <p>
             <div className="flex justify-center flex-col mt-4 gap-y-4 items-center">
               <span className="text-sm">Drag & drop {qty} <br></br>

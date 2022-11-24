@@ -128,6 +128,7 @@ const UploadBox = ({setToast,setErrorMessage}) => {
       {/* ViewBox  */}
       <div>
         
+        
         {viewbox}
       </div>
       
