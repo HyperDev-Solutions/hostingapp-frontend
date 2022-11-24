@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   BrowserRouter as Router,
@@ -7,6 +7,7 @@ import {
   Link,
   useSearchParams,
 } from "react-router-dom";
+import SuccessToast from './components/feedback/SuccessToast';
 import Toast from './components/feedback/Toast';
 import SideArrow from './components/SideArrow';
 import SideText from './components/SideText'
@@ -22,6 +23,32 @@ const Main = () => {
  
   const [openToast,setToast]=useState(false);
   const [errorMessage,setErrorMessage]=useState('');
+
+  const [signInToast, SetSignInToast] = useState(false)
+  const [signInToastMessage, SetSignInToastMessage] = useState(false)
+
+  const tokens = JSON.parse(localStorage.getItem("auth"));
+useEffect(()=>{
+
+  if (tokens){
+    SetSignInToast(true)
+    SetSignInToastMessage("Sign in Successful")
+     
+  }
+
+  
+
+},[])
+
+  // if ()
+  // if (!accessToken) {
+  //   // setToast(true)
+  //   // setErrorMessage("Please Sign In Again")
+  // } 
+  //   if (accessToken){
+  //    return  SetSignInToast(true)
+  //   }
+  
 
   return (
     <>
@@ -47,10 +74,11 @@ const Main = () => {
 </div>
   {openToast && <Toast message={errorMessage} setToast={setToast}/> }
     </div>
-    {/* <GetALLProject/> */}
     {
-      // localStorage.getItem("projectID") ?    <GetALLProject/>      :  ''
+signInToast && <SuccessToast  message={signInToastMessage} setToast={SetSignInToast} />
     }
+    {/* <GetALLProject/> */}
+
     </>
   )
 }

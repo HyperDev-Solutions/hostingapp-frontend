@@ -5,12 +5,10 @@ const URL=process.env.REACT_APP_BASE_URL
 
 const Callback = () => {
   
-    // const history=useHistory()
-//   console.log("sd");
   useEffect(() => {
     const params = new URLSearchParams(window.location.search); // id=123
     let code = params.get("code");
-    console.log(code);
+
 
     // fetch(`http://localhost:8000/api/deploy/auth/googleToken?code=${code}`)
     fetch(`${URL}/deploy/auth/googleToken?code=${code}`)

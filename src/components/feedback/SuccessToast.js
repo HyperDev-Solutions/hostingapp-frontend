@@ -1,13 +1,13 @@
 import React,{useEffect} from 'react'
 
-const Toast = ({setToast,message , }) => {
+const SuccessToast = ({setToast,message , }) => {
   useEffect(()=>{
     setTimeout(()=>{
       setToast(false);
     },6000)
   })
   return (
-    <div id="toast-danger" className=" fixed bottom-0 left-2 flex items-center p-4 mb-4 w-full max-w-xs text-white bg-red-600 rounded-lg shadow " role="alert">
+    <div id="toast-danger" className=" fixed bottom-0 left-2 flex items-center p-4 mb-4 w-full max-w-xs text-white bg-green-600 rounded-lg shadow " role="alert">
     <div className="ml-3 text-sm font-normal">{message}</div>
     <button
     onClick={(e)=>setToast(false)}
@@ -20,4 +20,4 @@ const Toast = ({setToast,message , }) => {
   )
 }
 
-export default Toast
+export default SuccessToast;
