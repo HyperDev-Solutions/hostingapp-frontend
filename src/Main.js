@@ -26,7 +26,7 @@ const Main = () => {
   return (
     <>
 
-    <div style={{background: "linear-gradient(135deg,#fff,#f8f8f8 59%)"}}>
+    <div style={{background: "linear-gradient(135deg,#fff,#f8f8f8 59%)"}} className="h-screen">
         {/* <h1>hellow</h1> */}
       {/* <Navbar/>
       <UploadBox/>

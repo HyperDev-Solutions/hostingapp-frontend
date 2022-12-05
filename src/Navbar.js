@@ -5,16 +5,16 @@ export const Navbar = () => {
   return (
     <>
     
-      <nav className="flex  p-2 bg-[#fafafa] flex-wrap items-center justify-center text-base md:ml-auto">
+      {/* <nav className="flex  p-2 bg-[#fafafa] flex-wrap items-center justify-center text-base md:ml-auto">
         <a className="mr-5 font-semibold hover:text-gray-900">
           ☆ Hosted 100,000+ links
         </a>
-      </nav>
+      </nav> */}
 
 
       <div className="flex items-center justify-between mx-5  py-8 lg:hidden md:hidden">
       <a href="/">
-        <img src="./logo.png"  height="130"  width="130" className="" alt="logo" />
+        <img src="./logo.png"  height="50"  width="50" className="" alt="logo" />
       </a>
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
@@ -57,12 +57,12 @@ export const Navbar = () => {
                 <a href="/contact">Pricing  </a>
               </li>
               <div className="lg:w-2/5 inline-flex lg:justify-end space-x-1  ml-5 lg:ml-0">
-            <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
+            {/* <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in
             </button>
             <button className="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
               Sign up free
-            </button>
+            </button> */}
           </div>
             </ul>
           </div>
@@ -109,14 +109,14 @@ export const Navbar = () => {
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">FAQ</a>
             <a className="mr-5 text-lg text-gray-900 text-md hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">Pricing</a>
           </nav>
-            <img src="./logo.png"  className="mx-6" alt="logo" height="50"  width="50"/>
+            <img src="./logo.png"  className="mr-16" alt="logo" height="50"  width="50"/>
           <div className="lg:w-2/5 inline-flex lg:justify-end space-x-1  ml-5 lg:ml-0">
-            <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
+            {/* <button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none font-medium   text-base mt-4 md:mt-0 hover:border-b-2 hover:border-[#bc67ec] hover:cursor-pointer">
               Log in
             </button>
             <button className="inline-flex items-center  border-2 font-medium border-solid border-[#bc67ec]  px-2 h-8 focus:outline-none text-[#bc67ec] rounded text-sm mt-4 md:mt-2">
               Sign up free
-            </button>
+            </button> */}
           </div>
         </div>
       </header>
