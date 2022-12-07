@@ -192,7 +192,7 @@ const FileUpload = ({setToast,setErrorMessage}) => {
       (
         <div className="flex items-center gap-x-4 ">
       <h1 > 
-     <a className="text-blue-400   text-xs lg:text-base " href={url}>  {url} </a>
+     <a className="text-blue-400   text-xs lg:text-base "  target="_blank" href={url}>  {url} </a>
      
       </h1> 
        <button
